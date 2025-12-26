@@ -1,0 +1,94 @@
+/**
+ * VectorWave Theme: Minimal Paper (White Clean)
+ */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    /* 폰트: 깔끔한 Pretendard */
+    --ifm-font-family-base: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* 메인 컬러: 세련된 블랙 & 딥 그레이 */
+    --ifm-color-primary: #111827;        /* 거의 검정에 가까운 남색 */
+    --ifm-color-primary-dark: #0f172a;
+    --ifm-color-primary-darker: #020617;
+    --ifm-color-primary-darkest: #000000;
+    --ifm-color-primary-light: #374151;
+    --ifm-color-primary-lighter: #4b5563;
+    --ifm-color-primary-lightest: #6b7280;
+
+    /* 배경색: 완전한 흰색 */
+    --ifm-background-color: #ffffff;
+    --ifm-background-surface-color: #f9fafb; /* 아주 연한 회색 (카드 배경 등) */
+
+    /* 코드 블록 스타일: 깔끔한 테두리 */
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
+}
+
+/* 다크 모드는 사용하지 않거나, 최소한의 가독성만 확보 */
+[data-theme='dark'] {
+    --ifm-background-color: #1a1a1a;
+    --ifm-color-primary: #e5e7eb;
+}
+
+/* 히어로 섹션 (메인 배너) - 그라데이션 제거, 여백 강조 */
+.heroBanner {
+    padding: 8rem 0 6rem;
+    text-align: center;
+    background-color: #ffffff;
+    color: #111827;
+}
+
+.heroTitle {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #000000;
+    margin-bottom: 1.5rem;
+}
+
+/* 버튼: 미니멀한 라인 스타일 */
+.button--primary {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    transition: all 0.2s ease;
+}
+
+.button--primary:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.button--secondary {
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    transition: all 0.2s ease;
+}
+
+.button--secondary:hover {
+    border-color: #000000;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+/* 카드 스타일: 그림자 없이 깔끔한 테두리 */
+.card {
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+    background-color: #ffffff !important;
+    transition: border-color 0.2s;
+}
+
+.card:hover {
+    border-color: #000000 !important;
+}
