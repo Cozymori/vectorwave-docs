@@ -1,94 +1,243 @@
 /**
- * VectorWave Theme: Minimal Paper (White Clean)
+ * VectorWave Custom CSS
+ * Global styles for Docusaurus theme customization
  */
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* Root Variables */
 :root {
-    /* 폰트: 깔끔한 Pretendard */
-    --ifm-font-family-base: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-
-    /* 메인 컬러: 세련된 블랙 & 딥 그레이 */
-    --ifm-color-primary: #111827;        /* 거의 검정에 가까운 남색 */
-    --ifm-color-primary-dark: #0f172a;
-    --ifm-color-primary-darker: #020617;
-    --ifm-color-primary-darkest: #000000;
-    --ifm-color-primary-light: #374151;
-    --ifm-color-primary-lighter: #4b5563;
-    --ifm-color-primary-lightest: #6b7280;
-
-    /* 배경색: 완전한 흰색 */
-    --ifm-background-color: #ffffff;
-    --ifm-background-surface-color: #f9fafb; /* 아주 연한 회색 (카드 배경 등) */
-
-    /* 코드 블록 스타일: 깔끔한 테두리 */
-    --ifm-code-font-size: 95%;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
+  /* Primary Colors */
+  --ifm-color-primary: #6A89A7;
+  --ifm-color-primary-dark: #0052cc;
+  --ifm-color-primary-darker: #004ab8;
+  --ifm-color-primary-darkest: #003d99;
+  --ifm-color-primary-light: #1a75ff;
+  --ifm-color-primary-lighter: #3385ff;
+  --ifm-color-primary-lightest: #66a3ff;
+  
+  /* Typography */
+  --ifm-font-family-base: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --ifm-heading-font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Code Block */
+  --ifm-code-font-size: 90%;
+  --ifm-code-border-radius: 8px;
+  
+  /* Navbar */
+  --ifm-navbar-height: 70px;
+  --ifm-navbar-padding-horizontal: 1.5rem;
+  
+  /* Footer */
+  --ifm-footer-padding-vertical: 3rem;
 }
 
-/* 다크 모드는 사용하지 않거나, 최소한의 가독성만 확보 */
+/* Dark Theme */
 [data-theme='dark'] {
-    --ifm-background-color: #1a1a1a;
-    --ifm-color-primary: #e5e7eb;
+  --ifm-background-color: #030712;
+  --ifm-background-surface-color: #0a1628;
+  --ifm-navbar-background-color: rgba(10, 22, 40, 0.95);
+  --ifm-footer-background-color: #0a1628;
+  --ifm-color-emphasis-300: #1e3a5f;
+  --ifm-toc-border-color: rgba(0, 102, 255, 0.15);
+  
+  /* Dark Theme Code Blocks */
+  --ifm-pre-background: #111d33;
+  --ifm-code-background: rgba(0, 102, 255, 0.1);
 }
 
-/* 히어로 섹션 (메인 배너) - 그라데이션 제거, 여백 강조 */
-.heroBanner {
-    padding: 8rem 0 6rem;
-    text-align: center;
-    background-color: #ffffff;
-    color: #111827;
+/* Light Theme Adjustments */
+[data-theme='light'] {
+  --ifm-background-color: #f8fafc;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.95);
 }
 
-.heroTitle {
-    font-size: 4rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: #000000;
-    margin-bottom: 1.5rem;
+/* Navbar Styling */
+.navbar {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  box-shadow: none;
 }
 
-/* 버튼: 미니멀한 라인 스타일 */
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.navbar__link {
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Footer Styling */
+.footer {
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+.footer__title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.footer__link-item {
+  transition: color 0.2s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light);
+}
+
+/* Documentation Styling */
+.markdown h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.markdown h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 3rem;
+}
+
+.markdown h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.markdown p {
+  line-height: 1.8;
+}
+
+/* Code Blocks */
+.prism-code {
+  border-radius: var(--ifm-code-border-radius);
+}
+
+[data-theme='dark'] .prism-code {
+  background: #111d33 !important;
+}
+
+/* Inline Code */
+code {
+  border-radius: 6px;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.9em;
+}
+
+/* Sidebar */
+.menu__link {
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.menu__link--active {
+  background: rgba(0, 102, 255, 0.1);
+}
+
+/* Table of Contents */
+.table-of-contents__link {
+  transition: color 0.2s ease;
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+/* Admonitions / Callouts */
+.alert {
+  border-radius: 12px;
+  border-left-width: 4px;
+}
+
+.alert--info {
+  --ifm-alert-background-color: rgba(0, 102, 255, 0.1);
+  --ifm-alert-border-color: var(--ifm-color-primary);
+}
+
+/* Buttons */
+.button {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
 .button--primary {
-    background-color: #000000;
-    color: #ffffff;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    font-weight: 600;
-    padding: 0.8rem 2rem;
-    transition: all 0.2s ease;
+  background: linear-gradient(135deg, #0066ff 0%, #00ccff 100%);
+  border: none;
 }
 
 .button--primary:hover {
-    background-color: #ffffff;
-    color: #000000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #0052cc 0%, #00b8e6 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
 }
 
-.button--secondary {
-    background-color: #ffffff;
-    color: #374151;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
-    font-weight: 600;
-    padding: 0.8rem 2rem;
-    transition: all 0.2s ease;
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.button--secondary:hover {
-    border-color: #000000;
-    color: #000000;
-    transform: translateY(-2px);
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-/* 카드 스타일: 그림자 없이 깔끔한 테두리 */
-.card {
-    border: 1px solid #e5e7eb !important;
-    box-shadow: none !important;
-    background-color: #ffffff !important;
-    transition: border-color 0.2s;
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 102, 255, 0.3);
+  border-radius: 4px;
 }
 
-.card:hover {
-    border-color: #000000 !important;
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 102, 255, 0.5);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 102, 255, 0.3);
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide homepage header/footer from main layout when using custom hero */
+.hero--primary {
+  display: none;
+}
+
+/* Animation Utilities */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .markdown h1 {
+    font-size: 2rem;
+  }
+  
+  .markdown h2 {
+    font-size: 1.5rem;
+  }
 }
