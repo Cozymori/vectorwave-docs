@@ -3,7 +3,7 @@ const sidebars = {
     tutorialSidebar: [
         {
             type: 'category',
-            label: 'VectorWave 가이드',
+            label: 'VectorWave Guide',
             collapsible: false, // 항상 펼쳐둠
             items: [
                 'intro',             // 1. 소개

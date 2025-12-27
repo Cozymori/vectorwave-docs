@@ -7,7 +7,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 import styles from './index.module.css';
 
-// 1. 히어로 섹션 (Clean White)
+// 1. Hero Section (Clean White)
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
     return (
@@ -35,19 +35,19 @@ function HomepageHeader() {
     );
 }
 
-// 2. 기능 목록 (아이콘 없이 텍스트 중심)
+// 2. Feature List (Text-centric without icons)
 const FeatureList = [
     {
         title: 'Auto Vectorization',
-        description: '데코레이터 한 줄로 코드와 데이터를 자동으로 벡터화합니다.',
+        description: 'Automatically vectorizes code and data with a single decorator.',
     },
     {
         title: 'Semantic Search',
-        description: '단순 키워드가 아닌, 코드의 의도와 맥락으로 검색하세요.',
+        description: 'Search by intent and context, not just simple keywords.',
     },
     {
         title: 'Self-Healing',
-        description: 'AI가 에러 로그를 분석하여 수정 코드를 제안합니다.',
+        description: 'AI analyzes error logs and suggests code patches.',
     },
 ];
 
@@ -76,7 +76,7 @@ function HomepageFeatures() {
     );
 }
 
-// 3. 코드 데모 (미니멀)
+// 3. Code Demo (Minimal)
 function CodeDemo() {
     return (
         <section style={{padding: '6rem 0', backgroundColor: '#f9fafb'}}>
@@ -87,13 +87,13 @@ function CodeDemo() {
                             Simple.<br/>Powerful.
                         </h2>
                         <p style={{fontSize: '1.1rem', color: '#4b5563', lineHeight: 1.8}}>
-                            복잡한 설정은 필요 없습니다.<br/>
-                            우리는 오직 <strong>개발자의 생산성</strong>에 집중합니다.
+                            No complex configuration needed.<br/>
+                            We focus solely on <strong>developer productivity</strong>.
                         </p>
                     </div>
 
                     <div className="col col--7">
-                        {/* 그림자를 옅게 처리하여 깔끔함 강조 */}
+                        {/* Light shadow for cleanliness */}
                         <div style={{boxShadow: '0 20px 40px rgba(0,0,0,0.05)', borderRadius: '8px', overflow: 'hidden', border: '1px solid #e5e7eb'}}>
                             <CodeBlock language="python" title="Clean & Simple">
                                 {`@vectorize

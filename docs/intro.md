@@ -1,59 +1,58 @@
+# Introduction
 
-# 소개 (Introduction)
+**VectorWave** is a **"Seamless Auto-Vectorization"** framework that synchronizes the execution flow and results of Python functions to a **Vector Database (Weaviate)** in real-time.
 
-**VectorWave**는 파이썬 함수의 실행 흐름과 결과를 **벡터 데이터베이스(Weaviate)**에 실시간으로 동기화하는 **"심리스 자동 벡터화(Seamless Auto-Vectorization)"** 프레임워크입니다.
+We transform volatile data that disappears the moment code is executed into a **Searchable** and **Reusable** permanent knowledge asset.
 
-우리는 코드가 실행되는 순간 사라지는 휘발성 데이터를, **검색 가능하고(Searchable)**, **재사용 가능한(Reusable)** 영구적인 지식 자산으로 변환합니다.
-
-:::info 핵심 철학
+:::info Core Philosophy
 **"Code is Data."**
-VectorWave는 단순히 로그를 텍스트로 남기는 것을 넘어, 함수의 **소스 코드(정의)**와 **실행 컨텍스트(입출력)**를 벡터 공간에 임베딩하여 AI가 이해할 수 있는 형태로 저장합니다.
+VectorWave goes beyond simply logging as text; it embeds the function's **Source Code (Definition)** and **Execution Context (I/O)** into vector space, storing it in a form that AI can understand.
 :::
 
-## 패러다임의 변화 (Why VectorWave?)
+## Paradigm Shift (Why VectorWave?)
 
-기존의 데이터 파이프라인과 VectorWave의 접근 방식은 근본적으로 다릅니다.
+Existing data pipelines and VectorWave's approach are fundamentally different.
 
-### 1. 기존 방식 (Legacy Pipeline)
-* **복잡한 과정:** 로그 파일 생성 → 수집(Logstash) → 전처리 → 임베딩 모델 호출 → 벡터 DB 저장.
-* **죽은 데이터:** 로그 파일은 단순한 텍스트일 뿐, 의미(Semantic)를 포함하지 않아 문맥 검색이 불가능합니다.
-* **관리 비용:** 데이터 스키마가 변경될 때마다 파이프라인 전체를 수정해야 합니다.
+### 1. Traditional Method (Legacy Pipeline)
+* **Complex Process:** Log file generation → Collection (Logstash) → Preprocessing → Embedding model call → Vector DB storage.
+* **Dead Data:** Log files are mere text and do not contain semantic meaning, making context search impossible.
+* **Management Cost:** The entire pipeline must be modified whenever the data schema changes.
 
-### 2. VectorWave 방식
-* **Zero Boilerplate:** 별도의 수집 서버나 파이프라인 없이, 함수 위에 `@vectorize` 데코레이터만 붙이면 끝납니다.
-* **살아있는 데이터:** 모든 데이터는 저장 즉시 벡터화되어, "결제 실패 원인 찾아줘"와 같은 자연어 질의가 가능합니다.
-* **자동 동기화:** 코드나 입출력 구조가 바뀌면, 벡터 DB의 스키마도 자동으로 대응합니다.
-
----
-
-## 주요 기능 상세 (Key Features)
-
-### 시맨틱 캐싱 (Semantic Caching)
-
-단순히 입력값이 `100%` 일치할 때만 캐싱하는 것이 아닙니다. VectorWave는 **입력의 의미적 유사성(Vector Distance)**을 판단합니다.
-
-> 예: "한국의 수도는?" 과 "대한민국의 수도가 어디야?"는 텍스트는 다르지만 의미는 같습니다. VectorWave는 이를 동일한 요청으로 간주하여 LLM 호출 비용을 절약합니다.
-
-### 분산 추적 (Distributed Tracing)
-
-복잡한 마이크로서비스나 함수 호출 체인을 하나의 `trace_id`로 묶어 시각화합니다.
-
-* **Trace Root:** `@vectorize`가 적용된 함수가 추적의 시작점이 됩니다.
-* **Trace Span:** 내부에서 호출되는 `@trace_span` 함수들은 자동으로 부모의 ID를 상속받아, 전체 실행 경로를 완성합니다.
-
-### 자가 치유 (Self-Healing)
-
-에러가 발생했을 때, 단순히 로그만 남기지 않습니다.
-
-1. 현재 발생한 **에러 로그**와 **소스 코드**를 가져옵니다.
-2. 과거에 성공했던 **유사한 실행 이력(Golden Data)**을 벡터 DB에서 검색합니다.
-3. LLM이 이를 비교 분석하여 **수정된 코드(Patch)**를 제안합니다.
+### 2. VectorWave Method
+* **Zero Boilerplate:** No separate collection server or pipeline needed; just add the `@vectorize` decorator above the function.
+* **Living Data:** All data is vectorized immediately upon storage, enabling natural language queries like "Find the cause of payment failure".
+* **Automatic Synchronization:** If code or I/O structure changes, the Vector DB schema adapts automatically.
 
 ---
 
-## 에코시스템 (Ecosystem)
+## Key Features
 
-VectorWave는 단독으로도 강력하지만, 주변 도구들과 함께할 때 AI 엔지니어링의 전 과정을 커버합니다.
+### Semantic Caching
 
-* **VectorSurfer:** 저장된 벡터 데이터를 시각화하는 웹 대시보드입니다. 실행 흐름을 타임라인으로 보고, 캐시 적중률과 에러율을 모니터링합니다.
-* **VectorCheck:** 기존의 `assert a == b` 방식의 테스트를 넘어, AI의 출력이 의도와 얼마나 유사한지 검증하는 **"의미론적 테스트(Semantic Testing)"** 프레임워크입니다.
+It doesn't just cache when input values match `100%`. VectorWave determines **Semantic Similarity (Vector Distance)** of the input.
+
+> Example: "What is the capital of Korea?" and "Where is the capital city of South Korea?" have different text but the same meaning. VectorWave considers these as the same request, saving LLM call costs.
+
+### Distributed Tracing
+
+Visualizes complex microservices or function call chains by binding them into a single `trace_id`.
+
+* **Trace Root:** The function with `@vectorize` applied becomes the starting point of the trace.
+* **Trace Span:** Internal functions with `@trace_span` automatically inherit the parent ID to complete the full execution path.
+
+### Self-Healing
+
+When an error occurs, it doesn't just leave a log.
+
+1. Retrieves the currently occurred **Error Log** and **Source Code**.
+2. Searches for **Similar Past Execution History (Golden Data)** in the Vector DB.
+3. The LLM compares and analyzes them to propose **Corrected Code (Patch)**.
+
+---
+
+## Ecosystem
+
+VectorWave is powerful on its own, but covers the entire AI engineering lifecycle when used with surrounding tools.
+
+* **VectorSurfer:** A web dashboard that visualizes stored vector data. View execution flow on a timeline and monitor cache hit rates and error rates.
+* **VectorCheck:** Beyond the traditional `assert a == b` testing method, it's a **"Semantic Testing"** framework that verifies how similar the AI's output is to the intent.

@@ -19,8 +19,8 @@ const config = {
     onBrokenMarkdownLinks: 'warn',
 
     i18n: {
-        defaultLocale: 'ko',
-        locales: ['ko', 'en'],
+        defaultLocale: 'en',
+        locales: ['en', 'ko'],
     },
 
     presets: [
@@ -30,7 +30,8 @@ const config = {
             ({
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
-                    editUrl: 'https://github.com/cozymori/vectorwave/tree/main/docs/',
+                    // [수정] Edit URL을 GitHub 리포지토리 주소로 맞춤
+                    editUrl: 'https://github.com/cozymori/vectorwave-docs/tree/main/',
                 },
                 blog: false,
                 theme: {
@@ -52,8 +53,6 @@ const config = {
                 title: 'VectorWave',
                 logo: {
                     alt: 'VectorWave Logo',
-                    // [수정 완료] 로고 파일명을 vectorwave_logo.png로 변경했습니다.
-                    // static/img 폴더 안에 이 파일이 있어야 합니다.
                     src: 'img/vectorwave_logo.png',
                 },
                 items: [
@@ -61,7 +60,11 @@ const config = {
                         type: 'docSidebar',
                         sidebarId: 'tutorialSidebar',
                         position: 'left',
-                        label: '가이드',
+                        label: 'Guide', // [수정] 가이드 -> Guide
+                    },
+                    {
+                        type: 'localeDropdown', // [추가] 언어 변경 드롭다운 추가
+                        position: 'right',
                     },
                     {
                         href: 'https://github.com/cozymori/vectorwave',
@@ -76,8 +79,8 @@ const config = {
                     {
                         title: 'Docs',
                         items: [
-                            { label: '시작하기', to: '/docs/getting_started' },
-                            { label: '핵심 기능', to: '/docs/core_concepts' },
+                            { label: 'Getting Started', to: '/docs/getting_started' }, // [수정] 시작하기 -> Getting Started
+                            { label: 'Core Concepts', to: '/docs/core_concepts' },     // [수정] 핵심 기능 -> Core Concepts
                         ],
                     },
                     {
