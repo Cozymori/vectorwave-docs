@@ -40,4 +40,4 @@ Works with Pinecone, Weaviate, Qdrant, Milvus, Chroma, and more.
 pip install vectorwave
 ```
 
-Ready to dive in? Check out our [Quick Start Guide](/docs/quickstart).
+Ready to dive in? Check out our [Getting Started Guide](/docs/getting_started).
